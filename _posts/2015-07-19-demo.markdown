@@ -1,0 +1,70 @@
+---
+layout: post
+title: Blog主题功能演示
+subtitle: Blog theme function demonstration
+description: 
+date: 2015-07-19 08:37:11
+categories:
+ - 日志
+tags:
+ - 日志
+gallery:
+  group: gallery
+  items:
+    - src: https://jekyllcodex.org/uploads/album/1.jpg
+      caption: My caption
+
+    - src: https://jekyllcodex.org/uploads/album/2.jpg
+      caption: My caption
+
+    - src: https://jekyllcodex.org/uploads/album/3.jpg
+      caption: My caption
+
+    - src: https://jekyllcodex.org/uploads/album/4.jpg
+      caption: My caption
+
+    - src: https://jekyllcodex.org/uploads/album/5.jpg
+      caption: My caption
+
+    - src: https://jekyllcodex.org/uploads/album/1.jpg
+      caption: My caption
+
+    - src: https://jekyllcodex.org/uploads/album/2.jpg
+      caption: My caption
+
+    - src: https://jekyllcodex.org/uploads/album/3.jpg
+      caption: My caption
+---
+
+## 代码块
+{% highlight bash linenos %}
+#!/bin/bash
+
+###### CONFIG
+ACCEPTED_HOSTS="/root/.hag_accepted.conf"
+BE_VERBOSE=false
+
+if [ "$UID" -ne 0 ]
+
+then
+ echo "Superuser rights required"
+ exit 2
+fi
+
+genApacheConf(){
+ echo -e "# Host ${HOME_DIR}$1/$2 :"
+}
+{% endhighlight %}
+
+
+## 相册
+{% include gallery.md gallery=page.gallery %}
+
+
+## 用户输入
+To switch directories, type <kbd>cd</kbd> followed by the name of the directory.
+To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
+
+
+## 行内代码块
+For example, <code>&lt;section&gt;</code> should be wrapped as inline.

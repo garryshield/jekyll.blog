@@ -1,0 +1,119 @@
+---
+layout: layout
+pagination: 
+  enabled: true
+---
+
+<header class="header mb-5">
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+
+      {% include nav.md %}
+
+      <div class="info">
+        <h1>{{ site.title }}</h1>
+        <p class="lead">我干了什么 究竟拿了时间换了什么</p>
+      </div>
+  </div>
+</div>
+</div>
+</header>
+
+<div class="container">
+<div class="row justify-content-center">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7">
+    
+      {% for post in paginator.posts %}
+      <div class="media mb-5">
+        <div class="media-body">
+          <h4><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h4>
+
+          <div class="text-secondary mb-3">
+            <div class="italic mb-2">By {{ site.title }}, Created at {{ post.date | date: '%F' }}</div>
+
+            {% if post.tags != empty %}
+            <dl class="tags mb-1">
+              <dt>Tags:</dt>
+              {% for tag in post.tags %}
+                <dd><a href="{{ site.baseurl }}/tags/#{{ tag }}">{{ tag }}</a></dd>
+              {% endfor %}
+              </dl>
+            {% endif %}
+
+            {% if post.categories != empty %}
+            <dl class="tags mb-1">
+              <dt>Categories:</dt>
+              {% for category in post.categories %}
+                <dd><a href="{{ site.baseurl }}/tags/#{{ category }}">{{ category }}</a></dd>
+              {% endfor %}
+              </dl>
+            {% endif %}
+          </div>
+
+          {% if post.excerpt != empty %}
+            <div>{{ post.excerpt }}</div>
+          {% else %}
+            <div>{{ post.content }}</div>
+          {% endif %}
+
+          <div class="mt-4">
+              <a href="{{ site.baseurl }}{{ post.url }}" class="btn btn-sm btn-outline-primary">READ MORE</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+      <!-- Pagination links -->
+      {% if paginator.total_pages > 1 %}
+      <div>
+        <ul class="pagination">
+        {% if paginator.previous_page %}
+          <li class="page-item">
+            <a class="page-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">Prev</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link">Prev</a>
+          </li>
+        {% endif %}
+      
+        {% for page in (1..paginator.total_pages) %}
+          {% if page == paginator.page %}
+            <li class="page-item active">
+              <a class="page-link">{{ page }}</a>
+            </li>
+          {% elsif page == 1 %}
+            <li class="page-item">
+              <a class="page-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+            </li>
+          {% else %}
+            <li class="page-item">
+              <a class="page-link" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+            </li>
+          {% endif %}
+        {% endfor %}
+      
+        {% if paginator.next_page %}
+          <li class="page-item">
+            <a class="page-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link">Next</a>
+          </li>
+        {% endif %}
+        </ul>
+      </div>
+      {% endif %}
+  </div>
+  
+  <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
+    {% include tags.md %}
+    {% include categories.md %}
+    {% include archives.md %}
+  </div>
+</div>
+</div>
+
+{% include footer.md %}

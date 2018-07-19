@@ -1,0 +1,2 @@
+<p>Copyright © Garry Shield 2018 </p>
+<p>Powered by <a href="https://github.com/jekyll/jekyll" target="_blank">Jekyll</a> and <a href="https://github.com/twbs/bootstrap" target="_blank">Bootstrap</a></p>

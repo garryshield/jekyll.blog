@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <meta name="description" content="{% if page.description %}{{ page.description | escape }}{% else %}{{ site.description | escape }}{% endif %}"></meta>
+    <meta name="keywords" content="{% if page.tags %}{{ page.tags | join: ', ' }}{% else %}{{ site.keywords | escape }}{% endif %}"></meta>
+
+    <title>{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title | escape }}{% endif %}</title>
+
+    <link rel="stylesheet" href="{{ "/assets/dist/css/libs.min.css" | prepend: site.baseurl }}">
+    <link rel="stylesheet" href="{{ "/assets/dist/libs/fontawesome/css/all.css" | prepend: site.baseurl }}">
+
+    <link rel="stylesheet" href="{{ "/assets/dist/css/main.min.css" | prepend: site.baseurl }}">
+  </head>
+  <body>
+  
+    {{ content }}
+
+    <script src="{{ "/assets/dist/js/libs.min.js" | prepend: site.baseurl }}"></script>
+    <script src="{{ "/assets/dist/js/main.min.js" | prepend: site.baseurl }}"></script>
+  </body>
+</html>
